@@ -1,12 +1,16 @@
 from django.http.response import HttpResponse
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from .models import playlist_user
+from django.contrib.auth.models import User
 from django.urls.base import reverse
 from django.contrib.auth import authenticate,login,logout
-from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from youtube_search import YoutubeSearch
 import json
+
 # import cardupdate
 
 
@@ -16,7 +20,9 @@ CONTAINER = json.load(f)
 
 def default(request):
     global CONTAINER
-
+    if request.method == 'GET':
+      if request.user.is_anonymous:
+        return redirect('login')
 
     if request.method == 'POST':
 
@@ -73,7 +79,6 @@ def add_playlist(request):
         cur_user.playlist_song_set.create(song_title=request.POST['title'],song_dur=request.POST['duration'],
         song_albumsrc = song__albumsrc,
         song_channel=request.POST['channel'], song_date_added=request.POST['date'],song_youtube_id=request.POST['songid'])
-        
 
 def signup_view(request):
   if request.method == 'POST':
@@ -84,22 +89,24 @@ def signup_view(request):
       return redirect('default')
   
   else:
-      form = UserCreationForm(initial={'username':'','password':'','re_password':''})
+    initial_data={'username':'','password1':'','password2':''}
+    form = UserCreationForm(initial=initial_data)
   return render(request,'signup.html',{'form':form})
 
 def login_view(request):
   if request.method == 'POST':
-    form = AuthenticationForm(request.POST)
+    form = AuthenticationForm(request,data=request.POST)
     if form.is_valid():
       user = form.get_user()
       login(request,user)
       return redirect('default')
   
   else:
-      form = AuthenticationForm(initial={'username':'','password':''})
+    data = {'username':'','password':''}
+    form = AuthenticationForm(request,initial=data)
   return render(request,'login.html',{'form':form})
 
 def logout_view(request):
     logout(request)
+    print("Log out Successfuly")
     return redirect('login')
-    # Redirect to a success page.

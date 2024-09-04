@@ -10,7 +10,7 @@
         content="Play your playlists and favourites tracks, albums, and artists " />
     <meta name="keywords"
         content="convert, convert playlists, transfer, syncing, smart links, free, apple music, streaming services" />
-	<link rel="stylesheet" href="{% static 'player.css' %}?{% now " U " %}"> {% block css %} {% endblock %}
+	<link rel="stylesheet" href="{% static 'player.css' %}?{% now ' U ' %}"> {% block css %} {% endblock %}
 	<title>Youttify</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 	</script>
@@ -61,7 +61,7 @@
             <div class="options create {% block liked-song %}
    {% endblock %}">
                 <img height="40px" class="likedImg" src="https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png"
-                    alt=""></img>
+                    alt="">
                 <a href="/playlist" class='label'>Liked Songs</a>
             </div>
         </div>
@@ -138,10 +138,10 @@
                     {% for card in playlist.1 %}
                     <div class="card c1">
                         <div class="albumcover">
-                            <img class="albumimg" src="{{ card.0 }}" alt="" srcset=""></img>
+                            <img class="albumimg" src="{{ card.0 }}" alt="" srcset="">
                             <div class="albumplay" onclick='playSong("{{ forloop.counter0 }}","{{ playlist.2 }}")'><img
                                     src="https://cdn.discordapp.com/attachments/768083738848133130/769476261181128734/image_1.png"
-                                    alt=""></img></div>
+                                    alt=""></div>
                         </div>
                         <span class='label albumtitle bond-to-two-lines'>{{ card.1 }}</span>
                         <span class='label albumauthor bond-to-two-lines'>By {{ card.2 }}</span>
@@ -189,21 +189,21 @@
                 <div onclick="goToStart()" class="mainicons">
                     <img class="mainicons"
                         src="https://cdn.discordapp.com/attachments/768083738848133130/773142728145371146/skip-back.svg"
-                        alt=""></img></div>
+                        alt=""></div>
 
                 <div id='playicon' class="mainicons playicon">
                     <img class="mainicons playicon"
                         src="https://cdn.discordapp.com/attachments/768083738848133130/773142731144560640/play-circle.svg"
-                        alt=""></img></div>
+                        alt=""></div>
 
                 <div id='pauseicon' class="mainicons playicon">
                     <img class="mainicons playicon"
                         src="https://cdn.discordapp.com/attachments/768083738848133130/773873949082910751/pause-circle.svg"
-                        alt=""></img></div>
+                        alt=""></div>
                 <div class="mainicons" onclick="nextSong()">
                     <img class="mainicons"
                         src="https://cdn.discordapp.com/attachments/768083738848133130/773142729714696212/skip-forward.svg"
-                        alt=""></img></div>
+                        alt=""></div>
             </div>
 
             <div class="slider">

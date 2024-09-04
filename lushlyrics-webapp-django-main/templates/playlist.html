@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'playlist.css' %}?{% now " U " %}">
+<link rel="stylesheet" href="{% static 'playlist.css' %}?{% now ' U ' %}">
 {% endblock %}
 
 {% block home %}
@@ -72,7 +72,7 @@ active
         <div class="playlist__headerDate">{{song.song_date_added}}</div>
         <div class="playlist__headerDuration">
         {{song.song_dur}}
-        <button type='submit' class="delete"><img src="https://cdn.discordapp.com/attachments/768083738848133130/777588678028951572/delete-icon-28.jpg" alt=""</button>
+        <button type='submit' class="delete"><img src="https://cdn.discordapp.com/attachments/768083738848133130/777588678028951572/delete-icon-28.jpg" alt=""></button>
         </div>
     </div>
     </form>

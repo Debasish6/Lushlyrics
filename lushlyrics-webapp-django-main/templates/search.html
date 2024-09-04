@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'search.css' %}?{% now " U " %}"> 
+<link rel="stylesheet" href="{% static 'search.css' %}?{% now ' U ' %}"> 
 {% endblock %}
 
 {% block home %}
@@ -20,10 +20,10 @@ active
                 {% for card in playlist %}
                 <div class="card c1">
                     <div class="albumcover">
-                        <img class="albumimg" src="{{ card.thumbnails.0 }}" alt="" srcset=""></img>
+                        <img class="albumimg" src="{{ card.thumbnails.0 }}" alt="" srcset="">
                         <div class="albumplay" onclick='playSong("{{ card.id }}","none",true)'><img
                                 src="https://cdn.discordapp.com/attachments/768083738848133130/769476261181128734/image_1.png"
-                                alt=""></img></div>
+                                alt=""></div>
                     </div>
                     <span class='label albumtitle bond-to-two-lines'>{{ card.title }}</span>
                     <span class='label albumauthor bond-to-two-lines'>By {{ card.channel }}</span>
